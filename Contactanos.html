@@ -60,7 +60,7 @@
                 <label for="message" class="form-label">Mensaje</label>
                 <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="button" class="btn btn-primary" id="submitButton">Enviar</button>
         </form>
     </div>
 
@@ -69,40 +69,16 @@
 
     <script>
         $(document).ready(function () {
-            $('#contactForm').submit(function (e) {
-                e.preventDefault(); 
-
+            $('#submitButton').click(function () {
                 
-                var formData = $(this).serialize();
-
-                
-                $.ajax({
-                    type: 'POST',
-                    url: 'send_email.php', 
-                    data: formData,
-                    success: function (response) {
-                        
-                        Swal.fire({
-                            title: '¡Gracias!',
-                            text: 'Tu mensaje ha sido enviado correctamente.',
-                            icon: 'success',
-                            confirmButtonText: 'OK'
-                        }).then((result) => {
-                            
-                            if (result.isConfirmed) {
-                                document.getElementById("contactForm").reset();
-                            }
-                        });
-                    },
-                    error: function (xhr, status, error) {
-                       
-                        Swal.fire({
-                            title: 'Error',
-                            text: 'Hubo un problema al enviar el mensaje. Por favor, inténtalo nuevamente más tarde.',
-                            icon: 'error',
-                            confirmButtonText: 'OK'
-                        });
-                    }
+                Swal.fire({
+                    title: '¡Gracias!',
+                    text: 'Tu mensaje ha sido enviado correctamente.',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    
+                    document.getElementById("contactForm").reset();
                 });
             });
         });
@@ -110,4 +86,8 @@
 </body>
 
 </html>
+
+
+
+
 
