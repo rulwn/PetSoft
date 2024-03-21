@@ -311,6 +311,7 @@ ion-icon{
 
 .info0{
     font-size: x-large;
+    
 }
 .info01{
     font-size: xx-large;
@@ -337,3 +338,11 @@ ion-icon{
 .celf2{
     width: 100%;
 }
+
+.mision, .vision {
+    flex: 1;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 10px;
+  }
